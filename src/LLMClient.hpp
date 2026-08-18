@@ -60,14 +60,14 @@ public:
         return body.dump();
     }
 
-    void applyAuth(web::WebRequest& req) const {
+    void applyAuth(geode::utils::web::WebRequest& req) const {
         req.header("Content-Type", "application/json");
         if (!apiKey.empty())
             req.header("Authorization", fmt::format("Bearer {}", apiKey));
     }
 
     // Разбор OpenAI-ответа → текст ассистента.
-    static LLMResult parseResponse(web::WebResponse& resp) {
+    static LLMResult parseResponse(geode::utils::web::WebResponse& resp) {
         LLMResult out;
         out.httpCode = resp.code();
         if (!resp.ok()) {

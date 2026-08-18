@@ -213,7 +213,7 @@ protected:
         this->setID("makellm-popup"_spr);
         this->setTitle("MakeLLM");
 
-        auto& M = Mod::get();
+        auto M = Mod::get();
         m_client.baseUrl = M->getSettingValue<std::string>("base-url");
         m_client.apiKey  = M->getSettingValue<std::string>("api-key");
         m_client.model   = M->getSettingValue<std::string>("model");
@@ -265,7 +265,7 @@ protected:
     }
 
     mll::prompt::Settings currentSettings() {
-        auto& M = Mod::get();
+        auto M = Mod::get();
         mll::prompt::Settings s;
         s.difficulty = M->getSettingValue<std::string>("difficulty");
         s.style      = M->getSettingValue<std::string>("style");
