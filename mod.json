@@ -21,18 +21,21 @@
    "type": "string",
    "default": "http://localhost:20128/v1",
    "name": "Base URL",
+   "filter": "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-_~:/?#@!$&()*+,;=%",
    "description": "OpenAI-compatible base URL. Omniroute: http://localhost:20128/v1 · Ollama: http://localhost:11434/v1 · LM Studio: http://localhost:1234/v1 · OpenAI: https://api.openai.com/v1"
   },
   "api-key": {
    "type": "string",
    "default": "",
    "name": "API Key",
+   "filter": "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._~",
    "description": "Bearer key. Leave empty for local servers without auth. Stays on this device."
   },
   "model": {
    "type": "string",
    "default": "default",
    "name": "Model",
+   "filter": "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-_/:+@",
    "description": "Model name to pass in the request (e.g. gpt-4o, qwen2.5-14b, deepseek-chat)."
   },
   "temperature": {
