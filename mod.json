@@ -1,0 +1,128 @@
+{
+ "geode": "5.8.2",
+ "gd": {
+  "win": "2.2081"
+ },
+ "id": "subkulturaakp.makellm",
+ "name": "MakeLLM",
+ "version": "v0.1.0",
+ "developer": "subkulturaakp",
+ "description": "Generate Geometry Dash 2.2 levels with any OpenAI-compatible LLM — right inside the level editor. Physics-validated: passable, no secret-ways.",
+ "tags": ["editor", "utility"],
+ "dependencies": {
+  "geode.node-ids": ">=v1.0.0"
+ },
+ "settings": {
+  "_provider-header": {
+   "type": "title",
+   "name": "LLM Provider (OpenAI-compatible)"
+  },
+  "base-url": {
+   "type": "string",
+   "default": "http://localhost:20128/v1",
+   "name": "Base URL",
+   "description": "OpenAI-compatible base URL. Omniroute: http://localhost:20128/v1 · Ollama: http://localhost:11434/v1 · LM Studio: http://localhost:1234/v1 · OpenAI: https://api.openai.com/v1"
+  },
+  "api-key": {
+   "type": "string",
+   "default": "",
+   "name": "API Key",
+   "description": "Bearer key. Leave empty for local servers without auth. Stays on this device."
+  },
+  "model": {
+   "type": "string",
+   "default": "default",
+   "name": "Model",
+   "description": "Model name to pass in the request (e.g. gpt-4o, qwen2.5-14b, deepseek-chat)."
+  },
+  "temperature": {
+   "type": "float",
+   "default": 0.9,
+   "min": 0.0,
+   "max": 2.0,
+   "name": "Temperature",
+   "description": "Higher = more creative layouts. 0.8-1.0 recommended.",
+   "control": { "slider": true, "slider-step": 0.05 }
+  },
+  "_gen-header": {
+   "type": "title",
+   "name": "Generation"
+  },
+  "difficulty": {
+   "type": "string",
+   "default": "medium",
+   "name": "Difficulty",
+   "description": "easy / medium / hard / extreme — or free-form (e.g. 'demon', 'tutorial')."
+  },
+  "style": {
+   "type": "string",
+   "default": "modern",
+   "name": "Style",
+   "description": "modern / retro / flow / memory — or free-form."
+  },
+  "length": {
+   "type": "string",
+   "default": "medium",
+   "name": "Length",
+   "one-of": ["short", "medium", "long", "xl", "xxl"]
+  },
+  "max-objects": {
+   "type": "int",
+   "default": 800,
+   "min": 50,
+   "max": 20000,
+   "name": "Max Objects",
+   "description": "Hard cap on objects per generation."
+  },
+  "refinement-rounds": {
+   "type": "int",
+   "default": 2,
+   "min": 0,
+   "max": 5,
+   "name": "Refinement Rounds",
+   "description": "How many times the AI may fix its level after the physics validator rejects it. Each round = one extra API call."
+  },
+  "unique-seed": {
+   "type": "bool",
+   "default": true,
+   "name": "Unique Seed",
+   "description": "Inject a random theme/palette/mechanic into every generation so no two levels are alike."
+  },
+  "_rules-header": {
+   "type": "title",
+   "name": "Validation"
+  },
+  "prevent-secret-way": {
+   "type": "bool",
+   "default": true,
+   "name": "Prevent Secret Ways",
+   "description": "Reject levels that complete themselves with zero input, and flight sections without ceilings."
+  },
+  "enable-triggers": {
+   "type": "bool",
+   "default": true,
+   "name": "Triggers & Colors",
+   "description": "Allow the AI to place color/move/pulse/alpha/rotate/spawn/toggle/stop triggers and assign group IDs."
+  },
+  "_editor-header": {
+   "type": "title",
+   "name": "Editor"
+  },
+  "ground-y": {
+   "type": "int",
+   "default": 105,
+   "min": 15,
+   "max": 300,
+   "name": "Ground Y",
+   "description": "Editor Y of the ground row. 105 is default. Lower if blocks float; higher if they bury."
+  },
+  "spawn-batch-size": {
+   "type": "int",
+   "default": 8,
+   "min": 1,
+   "max": 50,
+   "name": "Spawn Speed",
+   "description": "Objects placed per editor tick. Higher = faster but heavier per frame."
+  }
+ }
+}
